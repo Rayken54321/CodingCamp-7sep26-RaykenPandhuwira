@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Life Dashboard</title>
+  <link rel="stylesheet" href="css/style.css" />
+</head>
+<body>
+
+  <!-- ── HEADER: Greeting + Clock ── -->
+  <header class="header">
+    <div class="greeting-block">
+      <h1 id="greeting">Good Morning!</h1>
+      <p id="current-date"></p>
+      <!-- Challenge: Custom name -->
+      <div class="name-row" id="name-display-row">
+        <span class="name-label">👤 <span id="name-display"></span></span>
+        <button class="btn-link" id="name-edit-btn">Edit name</button>
+      </div>
+      <div class="name-row name-edit-row" id="name-edit-row" style="display:none;">
+        <input type="text" id="name-input" class="name-input" placeholder="Enter your name…" maxlength="40" />
+        <button class="btn btn-primary btn-sm" id="name-save-btn">Save</button>
+        <button class="btn btn-ghost btn-sm" id="name-cancel-btn">Cancel</button>
+      </div>
+    </div>
+    <div class="header-right">
+      <div class="clock-block">
+        <span id="clock"></span>
+      </div>
+      <!-- Challenge: Light / Dark mode toggle -->
+      <button class="theme-toggle" id="theme-toggle" aria-label="Toggle light/dark mode">
+        <span id="theme-icon">☀️</span>
+      </button>
+    </div>
+  </header>
+
+  <!-- ── MAIN GRID ── -->
+  <main class="dashboard">
+
+    <!-- Focus Timer -->
+    <section class="card" id="timer-card">
+      <h2 class="card-title">⏱ Focus Timer</h2>
+      <div class="timer-display" id="timer-display">25:00</div>
+      <div class="timer-controls">
+        <button class="btn btn-primary" id="timer-start">Start</button>
+        <button class="btn btn-secondary" id="timer-stop">Stop</button>
+        <button class="btn btn-ghost" id="timer-reset">Reset</button>
+      </div>
+      <p class="timer-label" id="timer-label">Pomodoro Session</p>
+    </section>
+
+    <!-- To-Do List -->
+    <section class="card" id="todo-card">
+      <h2 class="card-title">✅ To-Do List</h2>
+      <div class="todo-input-row">
+        <input
+          type="text"
+          id="todo-input"
+          class="todo-input"
+          placeholder="Add a new task…"
+          maxlength="120"
+        />
+        <button class="btn btn-primary" id="todo-add">Add</button>
+      </div>
+      <!-- Duplicate warning -->
+      <p class="duplicate-warning" id="duplicate-warning" style="display:none;">
+        ⚠️ That task already exists!
+      </p>
+      <ul class="todo-list" id="todo-list"></ul>
+      <p class="todo-empty" id="todo-empty">No tasks yet. Add one above!</p>
+    </section>
+
+    <!-- Quick Links -->
+    <section class="card" id="links-card">
+      <h2 class="card-title">🔗 Quick Links</h2>
+      <div class="links-input-row">
+        <input
+          type="text"
+          id="link-name-input"
+          class="links-input"
+          placeholder="Label (e.g. YouTube)"
+          maxlength="30"
+        />
+        <input
+          type="url"
+          id="link-url-input"
+          class="links-input"
+          placeholder="URL (e.g. https://youtube.com)"
+        />
+        <button class="btn btn-primary" id="link-add">Add</button>
+      </div>
+      <div class="links-grid" id="links-grid"></div>
+      <p class="todo-empty" id="links-empty">No links yet. Add one above!</p>
+    </section>
+
+  </main>
+
+  <!-- Edit Task Modal -->
+  <div class="modal-overlay" id="modal-overlay">
+    <div class="modal">
+      <h3>Edit Task</h3>
+      <input type="text" id="modal-input" class="todo-input" maxlength="120" />
+      <div class="modal-actions">
+        <button class="btn btn-primary" id="modal-save">Save</button>
+        <button class="btn btn-ghost" id="modal-cancel">Cancel</button>
+      </div>
+    </div>
+  </div>
+
+  <script src="js/app.js"></script>
+</body>
+</html>
